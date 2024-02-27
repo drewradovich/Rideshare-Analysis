@@ -123,7 +123,7 @@ merged_trips$day_of_week<- wday(merged_trips$started_at, TRUE, TRUE)
 merged_trips$start_hour <- format(as.POSIXct(merged_trips$started_at), "%H")
 
 ## Extract Month
-merged_trips$month <- format(as.POSIXct(merged_trips$started), '%B')
+merged_trips$month <- month(merged_trips$started_at, label = TRUE, abbr = TRUE)
 ```
 
 Next, I will calculate time for each individual trip using the start_time and end_time columns of my data frame. This will allow me to further filter the data to eliminate trips with no duration that may have been cancelled by users or failed to accurately report data.
@@ -204,9 +204,9 @@ average_trips$average_duration <- as.numeric(average_trips$average_duration, uni
 print(average_trips)
 
 ## Create a plot showing the average trip duration throughout the week
-ggplot(average_trips2, aes(x = average_duration, y = day_of_week, fill = member_type)) +
-+    geom_col(position = 'dodge') +
-+    labs(x = 'Average Duration', y = 'Day of Week', fill = 'Member Type', title = 'Average Trip Duration per Week Day')
+ggplot(average_trips, aes(x = average_duration, y = day_of_week, fill = member_type)) +
+geom_col(position = 'dodge') +
+labs(x = 'Average Duration', y = 'Day of Week', fill = 'Member Type', title = 'Average Trip Duration per Week Day')
 ```
 
 Now that I have more insight into how Cyclistic bikes are used, I want to explore where they are used. This information can help dictate which locations should be targeted for marketing based on the number of trips that occur.
@@ -220,21 +220,24 @@ member_trips <- cleaned_trips[cleaned_trips$member_casual == 'member',]
 end_station_counts <- member_trips$end_station_name %>% table() %>% sort(decreasing = TRUE)
 
 head(end_station_counts, 10)
-
+```
+```{r}
 ## Most popular start stations for members
 member_trips <- cleaned_trips[cleaned_trips$member_casual == 'member',]
 
 start_station_counts <- member_trips$start_station_name %>% table() %>% sort(decreasing = TRUE)
 
 head(start_station_counts, 10)
-
+```
+```{r}
 ## Most popular end stations for casual users
 casual_trips <- cleaned_trips[cleaned_trips$member_casual == 'casual',]
 
 end_station_counts2 <- casual_trips$end_station_name %>% table() %>% sort(decreasing = TRUE)
 
 head(end_station_counts2, 10)
-
+```
+```{r}
 ## Most popular start stations for casual users
 casual_trips <- cleaned_trips[cleaned_trips$member_casual == 'casual',]
 
