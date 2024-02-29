@@ -1,0 +1,575 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Cyclistic Case Study},
+  pdfauthor={Drew Radovich},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Cyclistic Case Study}
+\author{Drew Radovich}
+\date{2024-02-26}
+
+\begin{document}
+\maketitle
+
+\hypertarget{this-is-an-rmarkdown-file-to-walk-through-the-google-data-analyst-capstone-project-cyclistic-case-study.-the-data-for-this-study-has-been-made-available-by-motivate-international-inc.-under-this-license.}{%
+\subsubsection{\texorpdfstring{\textbf{This is an RMarkdown file to walk
+through the Google Data Analyst Capstone Project: Cyclistic Case Study.
+The data for this study has been made available by Motivate
+International Inc.~under this
+\href{https://divvy-tripdata.s3.amazonaws.com/index.html}{license}.}}{This is an RMarkdown file to walk through the Google Data Analyst Capstone Project: Cyclistic Case Study. The data for this study has been made available by Motivate International Inc.~under this license.}}\label{this-is-an-rmarkdown-file-to-walk-through-the-google-data-analyst-capstone-project-cyclistic-case-study.-the-data-for-this-study-has-been-made-available-by-motivate-international-inc.-under-this-license.}}
+
+Cyclistic is a bike-share company based in Chicago that provides over
+5,800 bikes at 600 docking stations. To appeal to those who may not be
+able to use conventional two-wheel bicycles, Cyclistic offers hand
+tricycles, reclining bikes, and cargo bikes in addition to traditional
+bicycles. These services are used mostly by casual app users, but also
+by annual members.
+
+For this case study, you are a junior data analyst who is part of the
+Cyclistic marketing analysts team, tasked with understanding the
+difference between casual and member use of Cyclistic bike shares. From
+this, your team will initiate a new marketing campaign aimed at
+converting casual users to annual members.
+
+\hypertarget{key-stakeholders-of-this-project-include}{%
+\subsection{Key stakeholders of this project
+include:}\label{key-stakeholders-of-this-project-include}}
+
+\textbf{Lily Moreno:} your direct supervisor and manager of marketing.
+Moreno is in charge of developing campaigns and initiatives to promote
+use of the bike-share program.
+
+\textbf{Cyclistic marketing analytics team:} you are part of this team
+who is responsible for collecting, analyzing, and reporting Cyclisitc
+ride-share data to inform marketing campaign recommendations.
+
+\textbf{Cyclistic executive team:} they will approve or deny any
+recommended marketing program
+
+\hypertarget{business-task}{%
+\subsection{Business Task:}\label{business-task}}
+
+To analyze ride-share data and define key characteristics and
+distinctions in bike use for casual users and annual members.
+
+In order to answer this business question, I will be using RStudio and
+the R programming language. I have chosen R because of it's ability to
+handle large data sets and it's ability to transform data and make
+visualizations. I have also chosen to use Tableau in order to better
+visualize my findings and condense information into a more
+comprehensible visual for stakeholders. To help my analysis in R, I will
+be utilizing the \emph{tidyverse}, \emph{janitor}, and \emph{lubridate}
+packages.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# Load packages for use}
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\FunctionTok{library}\NormalTok{(janitor)}
+\FunctionTok{library}\NormalTok{(lubridate)}
+\end{Highlighting}
+\end{Shaded}
+
+To start analyzing, I downloaded the 2023 ride-share data here. Since
+these files are in .csv format, I can add them to my R environment with
+the \emph{read.csv()} function. This is also an opportunity to clarify
+the names of the files to aid in analysis.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\#Adding a clear name for data \textless{}{-} Importing .csv file}
+
+\NormalTok{Jan2023 }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"2023\_trip\_data/2023\_01.csv"}\NormalTok{)}
+\NormalTok{Feb2023 }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"2023\_trip\_data/2023\_02.csv"}\NormalTok{)}
+\NormalTok{Mar2023 }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"2023\_trip\_data/2023\_03.csv"}\NormalTok{)}
+\NormalTok{Apr2023 }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"2023\_trip\_data/2023\_04.csv"}\NormalTok{)}
+\NormalTok{May2023 }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"2023\_trip\_data/2023\_05.csv"}\NormalTok{)}
+\NormalTok{Jun2023 }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"2023\_trip\_data/2023\_06.csv"}\NormalTok{)}
+\NormalTok{Jul2023 }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"2023\_trip\_data/2023\_07.csv"}\NormalTok{)}
+\NormalTok{Aug2023 }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"2023\_trip\_data/2023\_08.csv"}\NormalTok{)}
+\NormalTok{Sep2023 }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"2023\_trip\_data/2023\_09.csv"}\NormalTok{)}
+\NormalTok{Oct2023 }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"2023\_trip\_data/2023\_10.csv"}\NormalTok{)}
+\NormalTok{Nov2023 }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"2023\_trip\_data/2023\_11.csv"}\NormalTok{)}
+\NormalTok{Dec2023 }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"2023\_trip\_data/2023\_12.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+To make sure the data is reliable and can be analyzed as a whole, I want
+to check that each table has identical column names and data types. This
+can be done with the \emph{str()} function.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# Checking each file for compatibility to merge into one data set}
+\FunctionTok{str}\NormalTok{(Jan2023)}
+\FunctionTok{str}\NormalTok{(Feb2023)}
+\FunctionTok{str}\NormalTok{(Mar2023)}
+\FunctionTok{str}\NormalTok{(Apr2023)}
+\FunctionTok{str}\NormalTok{(May2023)}
+\FunctionTok{str}\NormalTok{(Jun2023)}
+\FunctionTok{str}\NormalTok{(Jul2023)}
+\FunctionTok{str}\NormalTok{(Aug2023)}
+\FunctionTok{str}\NormalTok{(Sep2023)}
+\FunctionTok{str}\NormalTok{(Oct2023)}
+\FunctionTok{str}\NormalTok{(Nov2023)}
+\FunctionTok{str}\NormalTok{(Dec2023)}
+\end{Highlighting}
+\end{Shaded}
+
+Since each table contain the same data columns and types, they can be
+merged into one data drame.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# Create new dataframe using bind\_rows}
+\NormalTok{merged\_trips }\OtherTok{\textless{}{-}} \FunctionTok{bind\_rows}\NormalTok{(Jan2023, Feb2023, Mar2023, Apr2023, May2023, Jun2023, Jul2023, Aug2023, Sep2023, Oct2023, Nov2023, Dec2023)}
+\end{Highlighting}
+\end{Shaded}
+
+Now that all of the data is in one data frame, we can begin to ensure
+that our data is clean by removing duplicates and verifying or removing
+empty data points. It is important to clean data and make sure that data
+types are equivalent so that further analysis is as accurate as
+possible.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# Clean data frame by removing spaces, parentheses, camelCase, etc.}
+\NormalTok{merged\_trips }\OtherTok{\textless{}{-}} \FunctionTok{clean\_names}\NormalTok{(merged\_trips)}
+
+\DocumentationTok{\#\# Remove empty columns and rows}
+\FunctionTok{remove\_empty}\NormalTok{(merged\_trips, }\AttributeTok{which =} \FunctionTok{c}\NormalTok{())}
+\end{Highlighting}
+\end{Shaded}
+
+In order to better understand ride-share usage, I want to look at usage
+on the hourly, daily, and monthly scale. I believe this will provide
+better insights to how casual and annual members use the ride-share
+program.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# Calculate day of the week using wday()}
+\NormalTok{merged\_trips}\SpecialCharTok{$}\NormalTok{day\_of\_week}\OtherTok{\textless{}{-}} \FunctionTok{wday}\NormalTok{(merged\_trips}\SpecialCharTok{$}\NormalTok{started\_at, }\ConstantTok{TRUE}\NormalTok{, }\ConstantTok{TRUE}\NormalTok{)}
+
+\DocumentationTok{\#\# Calculate the start hour for trips using POSIXct}
+\NormalTok{merged\_trips}\SpecialCharTok{$}\NormalTok{start\_hour }\OtherTok{\textless{}{-}} \FunctionTok{format}\NormalTok{(}\FunctionTok{as.POSIXct}\NormalTok{(merged\_trips}\SpecialCharTok{$}\NormalTok{started\_at), }\StringTok{"\%H"}\NormalTok{)}
+
+\DocumentationTok{\#\# Extract Month}
+\NormalTok{merged\_trips}\SpecialCharTok{$}\NormalTok{month }\OtherTok{\textless{}{-}} \FunctionTok{month}\NormalTok{(merged\_trips}\SpecialCharTok{$}\NormalTok{started\_at, }\AttributeTok{label =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{abbr =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Next, I will calculate time for each individual trip using the
+start\_time and end\_time columns of my data frame. This will allow me
+to further filter the data to eliminate trips with no duration that may
+have been cancelled by users or failed to accurately report data.
+
+Now that the cleaning is complete, I can start to explore the data and
+analyze for insights.
+
+First, I want to check how ride-share use varies throughout the week by
+member type. I believe that annual members are more likely to use the
+ride-share for commuting purposes, meaning that member trips should
+outnumber and be more consistent on weekdays (Monday through Friday) and
+casual user trips should outnumber annual members on the weekend
+(Saturday and Sunday).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# Plot number of rides by member type, options(scipen = ) is used to remove scientific value from results}
+\FunctionTok{options}\NormalTok{(}\AttributeTok{scipen =} \DecValTok{999}\NormalTok{)}
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ cleaned\_trips) }\SpecialCharTok{+}
+\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ day\_of\_week, }\AttributeTok{fill =}\NormalTok{ member\_casual) }\SpecialCharTok{+}
+\FunctionTok{geom\_bar}\NormalTok{(}\AttributeTok{position =} \StringTok{\textquotesingle{}dodge\textquotesingle{}}\NormalTok{) }\SpecialCharTok{+}
+\FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{\textquotesingle{}Day of Week\textquotesingle{}}\NormalTok{, }\AttributeTok{y =} \StringTok{\textquotesingle{}Number of Trips\textquotesingle{}}\NormalTok{, }\AttributeTok{fill =} \StringTok{\textquotesingle{}Member Type\textquotesingle{}}\NormalTok{, }\AttributeTok{title =} \StringTok{\textquotesingle{}Number of Rides per Day of Week\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{RMarkdown_Cyclistic_Project_files/figure-latex/week day plot-1.pdf}
+
+Now I want to check trips by month.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# Plot number of trips by member type per month}
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ cleaned\_trips) }\SpecialCharTok{+}
+\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ month, }\AttributeTok{fill =}\NormalTok{ member\_casual) }\SpecialCharTok{+}
+\FunctionTok{geom\_bar}\NormalTok{(}\AttributeTok{position =} \StringTok{\textquotesingle{}dodge\textquotesingle{}}\NormalTok{) }\SpecialCharTok{+}
+\FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{\textquotesingle{}Month\textquotesingle{}}\NormalTok{, }\AttributeTok{y =} \StringTok{\textquotesingle{}Number of Trips\textquotesingle{}}\NormalTok{, }\AttributeTok{fill =} \StringTok{\textquotesingle{}Member Type\textquotesingle{}}\NormalTok{, }\AttributeTok{title =} \StringTok{\textquotesingle{}Number of Trips per Month\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{RMarkdown_Cyclistic_Project_files/figure-latex/month plot-1.pdf}
+
+Next, I want to explore trips on a micro level and look at the starting
+hours of each trip. This should further support my hypothesis about
+annual members using Cyclistic bikes for commuting purposes. This will
+be explained further in the analysis section of this project.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# Plot trips per weekday by starting hour}
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ cleaned\_trips) }\SpecialCharTok{+}
+\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ start\_hour, }\AttributeTok{fill =}\NormalTok{ member\_casual) }\SpecialCharTok{+}
+\FunctionTok{geom\_bar}\NormalTok{() }\SpecialCharTok{+}
+\FunctionTok{facet\_wrap}\NormalTok{(}\SpecialCharTok{\textasciitilde{}}\NormalTok{day\_of\_week) }\SpecialCharTok{+}
+\FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{\textquotesingle{}Starting Hour\textquotesingle{}}\NormalTok{, }\AttributeTok{y =} \StringTok{\textquotesingle{}Number of Trips\textquotesingle{}}\NormalTok{, }\AttributeTok{fill =} \StringTok{\textquotesingle{}Member Type\textquotesingle{}}\NormalTok{, }\AttributeTok{title =} \StringTok{\textquotesingle{}Trips by Start Hour\textquotesingle{}}\NormalTok{) }\SpecialCharTok{+}
+\FunctionTok{theme}\NormalTok{(}\AttributeTok{axis.text =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{size =} \DecValTok{5}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{RMarkdown_Cyclistic_Project_files/figure-latex/start hour plot-1.pdf}
+
+I also calculated the average trip duration for every day. This data can
+be extremely helpful in understanding the purpose each member type
+derives from using the ride-share.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# Find the average trip duration }
+\NormalTok{average\_trips }\OtherTok{\textless{}{-}} \FunctionTok{aggregate}\NormalTok{(cleaned\_trips}\SpecialCharTok{$}\NormalTok{trip\_duration, }\FunctionTok{list}\NormalTok{(cleaned\_trips}\SpecialCharTok{$}\NormalTok{member\_casual, cleaned\_trips}\SpecialCharTok{$}\NormalTok{day\_of\_week), }\AttributeTok{FUN =}\NormalTok{ mean)}
+\end{Highlighting}
+\end{Shaded}
+
+Since aggregate() creates a table with placeholder column names, I want
+to rename the columns to make it easier to understand and analyze.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# Rename the column names to make analysis easier}
+\FunctionTok{colnames}\NormalTok{(average\_trips) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{\textquotesingle{}member\_type\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}day\_of\_week\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}average\_duration\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+I want to plot this data using \emph{ggplot()}, but since the data type
+\emph{} cannot be used, I will need to convert the data type of the
+average\_duration column to \emph{}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# Convert data types for use in ggplot, since \textless{}difftime\textgreater{} cannot be used}
+\NormalTok{average\_trips}\SpecialCharTok{$}\NormalTok{day\_of\_week }\OtherTok{\textless{}{-}} \FunctionTok{as.character}\NormalTok{(average\_trips}\SpecialCharTok{$}\NormalTok{day\_of\_week)}
+
+\NormalTok{average\_trips}\SpecialCharTok{$}\NormalTok{average\_duration }\OtherTok{\textless{}{-}} \FunctionTok{as.numeric}\NormalTok{(average\_trips}\SpecialCharTok{$}\NormalTok{average\_duration, }\AttributeTok{units =} \StringTok{\textquotesingle{}secs\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# Create a plot showing the average trip duration throughout the week}
+\FunctionTok{ggplot}\NormalTok{(average\_trips, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ average\_duration, }\AttributeTok{y =}\NormalTok{ day\_of\_week, }\AttributeTok{fill =}\NormalTok{ member\_type)) }\SpecialCharTok{+}
+\FunctionTok{geom\_col}\NormalTok{(}\AttributeTok{position =} \StringTok{\textquotesingle{}dodge\textquotesingle{}}\NormalTok{) }\SpecialCharTok{+}
+\FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{\textquotesingle{}Average Duration\textquotesingle{}}\NormalTok{, }\AttributeTok{y =} \StringTok{\textquotesingle{}Day of Week\textquotesingle{}}\NormalTok{, }\AttributeTok{fill =} \StringTok{\textquotesingle{}Member Type\textquotesingle{}}\NormalTok{, }\AttributeTok{title =} \StringTok{\textquotesingle{}Average Trip Duration per Week Day\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{RMarkdown_Cyclistic_Project_files/figure-latex/average trip plot-1.pdf}
+
+Now that I have more insight into how Cyclistic bikes are used, I want
+to explore where they are used. This information can help dictate which
+locations should be targeted for marketing based on the number of trips
+that occur.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# Use descriptive analysis to find the most popular start and end stations for members and casual}
+
+\DocumentationTok{\#\# Most popular end stations for members}
+\NormalTok{member\_trips }\OtherTok{\textless{}{-}}\NormalTok{ cleaned\_trips[cleaned\_trips}\SpecialCharTok{$}\NormalTok{member\_casual }\SpecialCharTok{==} \StringTok{\textquotesingle{}member\textquotesingle{}}\NormalTok{,]}
+
+\NormalTok{ end\_station\_counts }\OtherTok{\textless{}{-}}\NormalTok{ member\_trips}\SpecialCharTok{$}\NormalTok{end\_station\_name }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{table}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}  \FunctionTok{sort}\NormalTok{(}\AttributeTok{decreasing =} \ConstantTok{TRUE}\NormalTok{)}
+
+\FunctionTok{head}\NormalTok{(end\_station\_counts, }\DecValTok{10}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## .
+##                              Clinton St & Washington Blvd 
+##                       547259                        27446 
+##     Kingsbury St & Kinzie St            Clark St & Elm St 
+##                        26367                        24859 
+##        Wells St & Concord Ln      Clinton St & Madison St 
+##                        22249                        22096 
+##            Wells St & Elm St     University Ave & 57th St 
+##                        20227                        20217 
+##         Broadway & Barry Ave       State St & Chicago Ave 
+##                        19393                        19029
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# Most popular start stations for members}
+\NormalTok{member\_trips }\OtherTok{\textless{}{-}}\NormalTok{ cleaned\_trips[cleaned\_trips}\SpecialCharTok{$}\NormalTok{member\_casual }\SpecialCharTok{==} \StringTok{\textquotesingle{}member\textquotesingle{}}\NormalTok{,]}
+
+\NormalTok{start\_station\_counts }\OtherTok{\textless{}{-}}\NormalTok{ member\_trips}\SpecialCharTok{$}\NormalTok{start\_station\_name }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{table}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{sort}\NormalTok{(}\AttributeTok{decreasing =} \ConstantTok{TRUE}\NormalTok{)}
+
+\FunctionTok{head}\NormalTok{(start\_station\_counts, }\DecValTok{10}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## .
+##                              Clinton St & Washington Blvd 
+##                       549587                        26216 
+##     Kingsbury St & Kinzie St            Clark St & Elm St 
+##                        26172                        25001 
+##        Wells St & Concord Ln      Clinton St & Madison St 
+##                        21419                        20596 
+##            Wells St & Elm St     University Ave & 57th St 
+##                        20400                        20038 
+##         Broadway & Barry Ave     Loomis St & Lexington St 
+##                        18959                        18901
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# Most popular end stations for casual users}
+\NormalTok{casual\_trips }\OtherTok{\textless{}{-}}\NormalTok{ cleaned\_trips[cleaned\_trips}\SpecialCharTok{$}\NormalTok{member\_casual }\SpecialCharTok{==} \StringTok{\textquotesingle{}casual\textquotesingle{}}\NormalTok{,]}
+
+\NormalTok{end\_station\_counts2 }\OtherTok{\textless{}{-}}\NormalTok{ casual\_trips}\SpecialCharTok{$}\NormalTok{end\_station\_name }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{table}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{sort}\NormalTok{(}\AttributeTok{decreasing =} \ConstantTok{TRUE}\NormalTok{)}
+
+\FunctionTok{head}\NormalTok{(end\_station\_counts2, }\DecValTok{10}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## .
+##                                               Streeter Dr & Grand Ave 
+##                             381943                              49310 
+##  DuSable Lake Shore Dr & Monroe St              Michigan Ave & Oak St 
+##                              27539                              23688 
+## DuSable Lake Shore Dr & North Blvd                    Millennium Park 
+##                              23256                              22220 
+##                Theater on the Lake                     Shedd Aquarium 
+##                              17574                              15658 
+##                     Dusable Harbor              Wells St & Concord Ln 
+##                              13558                              11924
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# Most popular start stations for casual users}
+\NormalTok{casual\_trips }\OtherTok{\textless{}{-}}\NormalTok{ cleaned\_trips[cleaned\_trips}\SpecialCharTok{$}\NormalTok{member\_casual }\SpecialCharTok{==} \StringTok{\textquotesingle{}casual\textquotesingle{}}\NormalTok{,]}
+
+\NormalTok{start\_station\_counts2 }\OtherTok{\textless{}{-}}\NormalTok{ casual\_trips}\SpecialCharTok{$}\NormalTok{start\_station\_name }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{table}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{sort}\NormalTok{(}\AttributeTok{decreasing =} \ConstantTok{TRUE}\NormalTok{)}
+
+\FunctionTok{head}\NormalTok{(start\_station\_counts2, }\DecValTok{10}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## .
+##                                               Streeter Dr & Grand Ave 
+##                             326129                              46030 
+##  DuSable Lake Shore Dr & Monroe St              Michigan Ave & Oak St 
+##                              30487                              22664 
+## DuSable Lake Shore Dr & North Blvd                    Millennium Park 
+##                              20338                              20228 
+##                     Shedd Aquarium                Theater on the Lake 
+##                              17783                              16359 
+##                     Dusable Harbor              Wells St & Concord Ln 
+##                              15491                              12171
+\end{verbatim}
+
+\hypertarget{analysis}{%
+\subsection{Analysis}\label{analysis}}
+
+From my exploration of the data, I have discovered a few distinguishing
+features in the usage between casual users and annual members.Let's
+explore these differences together:
+
+First, by graphing out ride-share usage throughout the week, we can see
+an immediate difference in how casual users and annual members ride. For
+annual members, the graph appears like a typical bell curve with a
+\textbf{higher volume of rides from Monday to Friday}, and the lowest
+volume of the week falling on Saturday and Sunday. This supports my
+hypothesis that \textbf{annual members are more likely to use ride-share
+for commuting purposes}.
+
+For casual users, the opposite is true. I found higher ride volumes on
+weekend days (Friday, Saturday, Sunday), suggesting that
+\textbf{ride-share is more recreational for casual users}.
+
+These findings are further supported when we zoom out and look at ride
+volume throughout the year. Ride volume for both members and casual
+users increases during the summer months with \textbf{peaks in August
+and July}, respectively. Since these are typically the warmest and
+sunniest months, this makes sense for both people using bikes for
+commuting and recreational purposes. The drastic \textbf{drop in volume
+for the months of December through February} is also expected, given the
+harshness of Chicago winters.
+
+Looking at starting hours for rides throughout the week, there are
+\textbf{peaks of activity at 8:00am and 5:00pm on weekdays}. This
+activity is consistent for both casual users and annual members, meaning
+that \emph{casual users may also use the ride-share app for commuting
+during the week}, however not at the same volume as annual members. For
+weekends, casual users and annual members also have similar behaviors.
+Trips typically started later in the afternoon, with less noticeable
+peaks, but a \textbf{more consistent usage in the afternoon hours}.
+
+Based on the graph charting average ride duration by member type, casual
+users have significantly longer ride times compared to annual members.
+This makes sense given that casual users are using ride-shares for
+leisure versus annual members using them for transit.
+
+\hypertarget{recommendations}{%
+\subsection{Recommendations}\label{recommendations}}
+
+Revisiting the business task to determine differences between how casual
+users and annual members interact with Cyclistic, I can make a few
+recommendations for implementing a strategy to convert memberships.
+
+First, since start hour behavior throughout the week is consistent
+between the member types, this suggests that casual members are also
+likely to use ride-shares to commute to and from work. These casual
+users can be targeted for advertising to encourage membership based on
+their frequent use of Cyclistic bicycles.
+
+Further, several stations are shown by descriptive analysis to share
+high volume for both casual users and annual members. This can mean
+several things. Either these stations are close to businesses with a
+high number of employees who commute, they are close to major
+recreational areas, or they are along major transit routes. If the
+latter is true, specialized advertising can be placed along these routes
+explaining the benefits of Cyclistic membership.
+
+If large employers are located near popular stations, it may prove
+beneficial to partner with these businesses and offer discounted
+Cyclistic memberships for employees who commute. However this would
+require further research and effort to build relationships with those
+businesses.
+
+\hypertarget{closing-summary}{%
+\subsection{Closing Summary}\label{closing-summary}}
+
+For this project, I analyzed a years worth of data for the Cyclistic
+bike-share company, located in Chicago. Cyclistic offers a variety of
+ride-shares through single ride and day passes (casual users) or annual
+memberships. The tools I took advantage of in this instance were Sheets
+and RStudio. For my Tableau visualizations and analysis, please {[}visit
+here{]}.
+
+The task was to identify how casual users and annual members use
+ride-share differently. I hypothesized that casual use was more
+recreational in nature, whereas members most likely take advantage of
+Cyclistic for commuting. I examined daily, weekly, and monthly usage of
+bicycles for each member type. This confirmed my hypothesis that annual
+members most likely used the ride-share to commute and casual users
+spiked on the weekends. However, casual users mirrored annual member
+start hours throughout the week, suggesting that casual users may also
+use ride-share to commute.
+
+I suggest that advertisement be aimed at these casual users as they are
+the most likely to convert to annual memberships given their frequency
+of use. I also suggested that marketing be implemented near high traffic
+stations in order to maximize the reach of the campaign. This effort can
+be strengthened by further research into the areas surrounding popular
+stations and possibly partnering with businesses in the area to offer
+discounted Cyclistic membership to employees who commute to work.
+
+\end{document}
